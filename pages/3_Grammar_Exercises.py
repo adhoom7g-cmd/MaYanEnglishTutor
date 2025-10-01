@@ -33,8 +33,8 @@ if st.session_state.current_topic is None:
     for topic in topics:
         with st.expander(f"📖 {topic['title']}", expanded=False):
             st.markdown(f"**Focus:** {topic['description']}")
-            st.markdown(f"**Level:** {topic['level']}")
-            st.markdown(f"**Exercises:** {len(topic['exercises'])}")
+            st.markdown(f"**Difficulty:** {topic['difficulty']}")
+            st.markdown(f"**Exercises:** {topic['exercise_count']}")
             
             if st.button(f"Start Exercises", key=f"start_{topic['id']}"):
                 st.session_state.current_topic = topic['id']
@@ -59,9 +59,10 @@ else:
     with st.expander("📚 Grammar Rules & Examples", expanded=True):
         st.markdown(topic['explanation'])
         
-        st.markdown("**Examples:**")
-        for example in topic['examples']:
-            st.markdown(f"✓ {example}")
+        if topic.get('examples'):
+            st.markdown("**Examples:**")
+            for example in topic['examples']:
+                st.markdown(f"✓ {example}")
     
     st.markdown("---")
     

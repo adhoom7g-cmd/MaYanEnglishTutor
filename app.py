@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from utils.progress_tracker import ProgressTracker
+from utils.database import init_database
 import json
 from datetime import datetime
 
@@ -14,9 +15,11 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Initialize progress tracker
-if 'progress_tracker' not in st.session_state:
-    st.session_state.progress_tracker = ProgressTracker()
+# Initialize database
+try:
+    init_database()
+except Exception as e:
+    st.error(f"Database initialization error: {str(e)}")
 
 # Initialize session state for user preferences
 if 'user_name' not in st.session_state:
@@ -30,9 +33,17 @@ st.subheader("For Tourism & Website Professionals - B2 Level")
 with st.sidebar:
     st.header("👤 User Profile")
     user_name = st.text_input("Your Name", value=st.session_state.user_name, key="user_name_input")
-    if user_name:
+    if user_name != st.session_state.user_name:
         st.session_state.user_name = user_name
-    
+        # Reload progress tracker with new user
+        st.session_state.progress_tracker = ProgressTracker(user_name)
+        st.rerun()
+
+# Initialize progress tracker after user name is set
+if 'progress_tracker' not in st.session_state:
+    st.session_state.progress_tracker = ProgressTracker(st.session_state.user_name)
+
+with st.sidebar:
     st.divider()
     st.header("📚 Learning Modules")
     st.write("Navigate using the sidebar pages:")
