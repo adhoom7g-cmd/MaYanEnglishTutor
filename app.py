@@ -53,7 +53,6 @@ with st.sidebar:
     st.write("4. 📰 Reading Comprehension")
     st.write("5. 🗣️ Pronunciation Guide")
     st.write("6. ✉️ Writing Exercises")
-    st.write("7. 📘 Daily Lessons")
 
 # Welcome section
 st.markdown("---")
