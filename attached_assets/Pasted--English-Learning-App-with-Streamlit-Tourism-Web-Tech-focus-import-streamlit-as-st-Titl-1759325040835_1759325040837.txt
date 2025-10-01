@@ -1,0 +1,63 @@
+# English Learning App with Streamlit (Tourism + Web/Tech focus)
+
+import streamlit as st
+
+# --- Title & Intro ---
+st.title("📘 English Learning App")
+st.subheader("Daily English Lessons for Tourism & Web/Tech")
+
+st.write("Welcome! This app helps you learn *English vocabulary, sentences, and exercises* with a focus on tourism and technology.")
+
+# --- Lesson 1 Content ---
+st.header("✨ Lesson 1: Travel & Business Events")
+
+st.markdown("#### 🗒 Vocabulary (20 words)")
+words = [
+    ("Destination", "وجهة"),
+    ("Success", "نجاح"),
+    ("Supplier", "مورّد"),
+    ("Vendor", "بائع / مزوّد"),
+    ("Trade show", "معرض تجاري"),
+    ("Relationship", "علاقة"),
+    ("Client", "عميل"),
+    ("Confidence", "ثقة"),
+    ("Investment", "استثمار"),
+    ("Growth", "نمو"),
+    ("Opportunity", "فرصة"),
+    ("Energized", "مليء بالطاقة"),
+    ("Welcoming", "ترحيبي"),
+    ("Family-oriented", "يهتم بالعائلة"),
+    ("Knowledge", "معرفة"),
+    ("Session", "جلسة"),
+    ("Speaker", "متحدث"),
+    ("Respect", "احترام"),
+    ("Experience", "تجربة"),
+    ("Annual", "سنوي"),
+]
+
+for en, ar in words:
+    st.write(f"{en}** – {ar}")
+
+# --- Example Sentences ---
+st.markdown("#### 📝 Example Sentences")
+sentences = [
+    "This event was the best experience I have had in years.",
+    "We built strong relationships with many suppliers.",
+    "I have the confidence to sell travel packages now.",
+    "The company made a big investment in this event.",
+    "Meeting new clients is always an opportunity.",
+    "The trade show was full of useful information.",
+    "Every session had a great speaker.",
+    "The staff were very welcoming and friendly.",
+    "This will become an annual event.",
+    "Respect is important for business growth."
+]
+
+for i, s in enumerate(sentences, 1):
+    st.write(f"{i}. {s}")
+
+# --- Homework Section ---
+st.markdown("#### 🏠 Homework")
+st.write("1. Write 5 new sentences using: *supplier, client, growth, confidence, respect*.")
+st.write("2. Read the 10 sentences aloud twice.")
+st.write("3. Write one personal sentence using *annual*.")
